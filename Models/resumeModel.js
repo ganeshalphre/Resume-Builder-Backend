@@ -66,7 +66,7 @@ const resumeSchema = new Schema({
         responsibilities: [],
         achievements: []
     },
-    honorAndAward: [],
+    honorsAndAwards: [],
     training: [{
         title: {type: String},
         instutionName: {type: String},
