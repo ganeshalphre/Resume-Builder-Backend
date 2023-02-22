@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import bodyParser from "body-parser";
 import authRoute from "./Routes/authRoute.js"
+import resumeRoute from "./Routes/resumeRoute.js"
 import connectDb from "./Middlewares/dbConnection.js";
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/api", authRoute);
+app.use("/api", resumeRoute);
 
 app.listen(port, () => {
     console.log(`Server running on ${port}`)

@@ -4,24 +4,23 @@ const Schema = mongoose.Schema;
 
 const resumeSchema = new Schema({
     contact: {
-        firsrName: {type: String},
+        firstName: {type: String},
         lastName: {type: String},
         email: {type: String},
         phone: {type: String},
-        address: [{
-            doorNo: {type: String},
-            address: {type: String},
-            city: {type: String},
-            country: {type: String}
-        }],
+        address: [],
+        // address: [{
+        //     doorNo: {type: String},
+        //     address: {type: String},
+        //     city: {type: String},
+        //     country: {type: String}
+        // }],
         linkedinId: {type: String}
     },
-    summary: {
-        type: String
-    },
+    summary: [],
     skills: [],
     techSkills: [],
-    experience: [{
+    experiences: [{
         designation: {type: String},
         companyName: {type: String},
         startedAt: {type: String},
@@ -30,7 +29,7 @@ const resumeSchema = new Schema({
         country: {type: String},
         responsibilities: []
     }],
-    internship: [{
+    internships: [{
         designation: {type: String},
         companyName: {type: String},
         startedAt: {type: String},
@@ -40,23 +39,24 @@ const resumeSchema = new Schema({
         responsibilities: [],
         achievements: []
     }],
-    education: [{
+    educations: [{
         degreeName: {type: String},
-        collegeORUniversityName: {type: String},	
+        collegeName: {type: String},	
         city: {type: String},
         country: {type: String},	
         startedAt: {type: String},
         endedAt: {type: String},
-        Score: {type: String}
+        score: {type: String}
     }],
     interest: [],
     projects: [{
+        number: {type: String},
         title: {type: String},
         startedAt: {type: String},
         endedAt: {type: String},
         description: {type: String}
     }],
-    volunteerExperience: {
+    volunteerExperiences: [{
         designation: {type: String},	
         companyName: {type: String},	
         startedAt: {type: String},
@@ -65,9 +65,9 @@ const resumeSchema = new Schema({
         country: {type: String},
         responsibilities: [],
         achievements: []
-    },
+    }],
     honorsAndAwards: [],
-    training: [{
+    trainings: [{
         title: {type: String},
         instutionName: {type: String},
         city: {type: String},
@@ -76,7 +76,7 @@ const resumeSchema = new Schema({
         endedAt: {type: String},
         score: {type: String}
     }],
-    certification: [{
+    certifications: [{
         title: {type: String},
         instutionName: {type: String},
         city: {type: String},
@@ -85,12 +85,12 @@ const resumeSchema = new Schema({
         endedAt: {type: String},
         score: {type: String}
     }],
-    license: [{
+    license: {
         name: {type: String},
         number: {type: String},
-        validity: {type: Boolean}
-    }],
-    course: [{
+        validity: {type: String}
+    },
+    courses: [{
         title: {type: String},
         instutionName: {type: String},
         city: {type: String},
@@ -99,17 +99,17 @@ const resumeSchema = new Schema({
         endedAt: {type: String},
         score: {type: String}
     }],
-    patent: [{
+    patent  : {
         title: {type: String},
         number: {type: String},
         description: {type: String},
         status: {type: String}
-    }],
-    publication: [{
+    },
+    publications: [{
         name: {type: String},
         description: {type: String}
     }],
-    workshop: [{
+    workshops: [{
         designation: {type: String},
         companyName: {type: String},
         city: {type: String},
@@ -119,13 +119,20 @@ const resumeSchema = new Schema({
         responsibilities: [],
         achievements: []
     }],
-    reference: {
+    references: [{
         name: {type: String},
         designation: {type: String},
-        company: {type: String}
+        company: {type: String},
+        email: {type: String}
+    }],
+    personalDetails: {
+        languageKnown: [],
+        dateOfBirth: {type: String},
+        nationality: {type: String},
+        passport: {type: String}
     }
 }, { timestamps: true });
 
-const Resume = mongoose.model('User', resumeSchema);
+const Resume = mongoose.model('Resume', resumeSchema);
 
 export default Resume;
