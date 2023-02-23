@@ -37,7 +37,7 @@ const resumeSchema = new Schema({
         city: {type: String},
         country: {type: String},
         responsibilities: [],
-        achievements: []
+        
     }],
     educations: [{
         degreeName: {type: String},
@@ -64,12 +64,12 @@ const resumeSchema = new Schema({
         city: {type: String},
         country: {type: String},
         responsibilities: [],
-        achievements: []
+        
     }],
     honorsAndAwards: [],
     trainings: [{
         title: {type: String},
-        instutionName: {type: String},
+        institutionName: {type: String},
         city: {type: String},
         country: {type: String},
         startedAt: {type: String},
@@ -78,7 +78,7 @@ const resumeSchema = new Schema({
     }],
     certifications: [{
         title: {type: String},
-        instutionName: {type: String},
+        institutionName: {type: String},
         city: {type: String},
         country: {type: String},
         startedAt: {type: String},
@@ -88,26 +88,29 @@ const resumeSchema = new Schema({
     license: {
         name: {type: String},
         number: {type: String},
-        validity: {type: String}
+        issuer: {type: String},
+        validFrom: {type: String},
+        validTill: {type: String}
     },
     courses: [{
         title: {type: String},
-        instutionName: {type: String},
+        institutionName: {type: String},
         city: {type: String},
         country: {type: String},
         startedAt: {type: String},
         endedAt: {type: String},
         score: {type: String}
     }],
-    patent  : {
+    patents: [{
         title: {type: String},
         number: {type: String},
-        description: {type: String},
+        descriptions: [],
         status: {type: String}
-    },
+    }],
     publications: [{
-        name: {type: String},
-        description: {type: String}
+        title: {type: String},
+        date: {type: String},
+        descriptions: []
     }],
     workshops: [{
         designation: {type: String},
@@ -117,7 +120,7 @@ const resumeSchema = new Schema({
         startedAt: {type: String},
         endedAt: {type: String},
         responsibilities: [],
-        achievements: []
+        
     }],
     references: [{
         name: {type: String},
