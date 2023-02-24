@@ -56,11 +56,12 @@ export const getUniqueResume = async (req, res) => {
 export const updateResume = async (req, res) => {
     const {resumeId} = req.params;
     try {
-        const resumeFind = await Resume.findById(id);
+        const resumeFind = await Resume.findById(resumeId);
         if(!resumeFind) return res.json({success: false, msg: "Resume Not Found"});
         const updateResume = await Resume.findByIdAndUpdate({_id: resumeId}, req.body)
         return res.json({success: true, msg: "Resume Data Updated Successfully", resume: updateResume})
     } catch (error) {
+        console.log(error)
         return res.json({success: false, msg: "something went wrong", error})
     }
 }

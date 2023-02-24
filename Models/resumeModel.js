@@ -9,12 +9,6 @@ const resumeSchema = new Schema({
         email: {type: String},
         phone: {type: String},
         address: [],
-        // address: [{
-        //     doorNo: {type: String},
-        //     address: {type: String},
-        //     city: {type: String},
-        //     country: {type: String}
-        // }],
         linkedinId: {type: String}
     },
     summary: [],
