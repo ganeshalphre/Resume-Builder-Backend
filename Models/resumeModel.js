@@ -48,7 +48,7 @@ const resumeSchema = new Schema({
         title: {type: String},
         startedAt: {type: String},
         endedAt: {type: String},
-        description: {type: String}
+        descriptions: []
     }],
     volunteerExperiences: [{
         designation: {type: String},	
@@ -99,7 +99,7 @@ const resumeSchema = new Schema({
         title: {type: String},
         number: {type: String},
         descriptions: [],
-        status: {type: String}
+        status: {type: String}  
     }],
     publications: [{
         title: {type: String},

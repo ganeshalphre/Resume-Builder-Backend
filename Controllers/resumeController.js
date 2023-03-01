@@ -56,6 +56,7 @@ export const getUniqueResume = async (req, res) => {
 export const updateResume = async (req, res) => {
     const {resumeId} = req.params;
     try {
+        console.log(req.body);
         const resumeFind = await Resume.findById(resumeId);
         if(!resumeFind) return res.json({success: false, msg: "Resume Not Found"});
         const updateResume = await Resume.findByIdAndUpdate({_id: resumeId}, req.body)
