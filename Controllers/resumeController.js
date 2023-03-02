@@ -31,10 +31,11 @@ export const createResume = async (req, res) => {
 }
 
 export const getAllResumesByUser = async (req, res) => {
-    const userId = req.user.id;
+    // const userId = req.user.id;
     try {
-        const resumes = await Resume.find({userId})
-        return res.josn({success: true, msg: "User Resumes Sended Successfully", resumes})
+        // const resumes = await Resume.find({userId})
+        const resumes = await Resume.find();
+        return res.json({success: true, msg: "User Resumes Sended Successfully", resumes})
     } catch (error) {
         console.log(error);
         return res.json({success: false, msg: "something went wrong", error})
@@ -64,5 +65,18 @@ export const updateResume = async (req, res) => {
     } catch (error) {
         console.log(error)
         return res.json({success: false, msg: "something went wrong", error})
+    }
+}
+
+export const deleteResume = async (req, res) => {
+    const {resumeId} = req.params;
+    try {
+        const resume = await Resume.findByIdAndDelete(resumeId);
+        console.log(resume);
+        const resumes = await Resume.find();
+        return res.json({success: true, msg: "Resume Deleted Successfully", resumes});
+    } catch (error) {
+        console.log(error);
+        return res.json({success: false})
     }
 }

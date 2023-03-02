@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const resumeSchema = new Schema({
+const smartCardSchema = new Schema({
     userId: {
         type: String
     },
@@ -31,7 +31,6 @@ const resumeSchema = new Schema({
         endedAt: {type: String},
         city: {type: String},
         country: {type: String},
-        responsibilities: []
     }],
     internships: [{
         designation: {type: String},
@@ -40,8 +39,6 @@ const resumeSchema = new Schema({
         endedAt: {type: String},
         city: {type: String},
         country: {type: String},
-        responsibilities: [],
-        
     }],
     educations: [{
         degreeName: {type: String},
@@ -58,7 +55,6 @@ const resumeSchema = new Schema({
         title: {type: String},
         startedAt: {type: String},
         endedAt: {type: String},
-        descriptions: []
     }],
     volunteerExperiences: [{
         designation: {type: String},	
@@ -67,8 +63,6 @@ const resumeSchema = new Schema({
         endedAt: {type: String},
         city: {type: String},
         country: {type: String},
-        responsibilities: [],
-        
     }],
     honorsAndAwards: [],
     trainings: [{
@@ -108,13 +102,11 @@ const resumeSchema = new Schema({
     patents: [{
         title: {type: String},
         number: {type: String},
-        descriptions: [],
         status: {type: String}  
     }],
     publications: [{
         title: {type: String},
         date: {type: String},
-        descriptions: []
     }],
     workshops: [{
         designation: {type: String},
@@ -123,7 +115,6 @@ const resumeSchema = new Schema({
         country: {type: String},
         startedAt: {type: String},
         endedAt: {type: String},
-        responsibilities: [],
         
     }],
     references: [{
@@ -140,6 +131,6 @@ const resumeSchema = new Schema({
     }
 }, { timestamps: true });
 
-const Resume = mongoose.model('Resume', resumeSchema);
+const SmartCard = mongoose.model('Smardcard', smartCardSchema);
 
-export default Resume;
+export default SmartCard;
