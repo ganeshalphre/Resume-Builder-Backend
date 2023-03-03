@@ -67,6 +67,21 @@ export const updateResume = async (req, res) => {
         return res.json({success: false, msg: "something went wrong", error})
     }
 }
+export const updateResumeName = async (req, res) => {
+    const {resumeId} = req.params;
+    const {fileName} = req.body;
+    try {
+        console.log(req.body);
+        const resumeFind = await Resume.findById(resumeId);
+        if(!resumeFind) return res.json({success: false, msg: "Resume Not Found"});
+        const updateResume = await Resume.findByIdAndUpdate({_id: resumeId}, {fileName})
+        const resumes = await Resume.find();
+        return res.json({success: true, msg: "Resume Data Updated Successfully", resumes})
+    } catch (error) {
+        console.log(error)
+        return res.json({success: false, msg: "something went wrong", error})
+    }
+}
 
 export const deleteResume = async (req, res) => {
     const {resumeId} = req.params;

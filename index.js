@@ -8,14 +8,15 @@ import resumeRoute from "./Routes/resumeRoute.js"
 import smartCardRoute from "./Routes/smartCardRoute.js"
 
 const app = express();
-const port = process.env.PORT || 3002
-
 dotenv.config();
 connectDb();
 
+const port = process.env.PORT || 3002
+
+
 app.use(cors());
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/api", authRoute);
 app.use("/api", resumeRoute);

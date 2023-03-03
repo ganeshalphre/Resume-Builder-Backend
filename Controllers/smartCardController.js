@@ -49,6 +49,21 @@ export const updateSmartCard = async (req, res) => {
     }
 }
 
+export const updateSmartCardName = async (req, res) => {
+    const {smartCardId} = req.params;
+    const {fileName} = req.body;
+    try {
+        const smartCardFind = await SmartCard.findById(smartCardId);
+        if(!smartCardFind) return res.json({success: false, msg: "Resume Not Found"});
+        const updateSmartCard = await SmartCard.findByIdAndUpdate({_id: smartCardId}, {fileName})
+        const smartCards = await SmartCard.find();
+        return res.json({success: true, msg: "Resume Data Updated Successfully", smartCards})
+    } catch (error) {
+        console.log(error)
+        return res.json({success: false, msg: "something went wrong", error})
+    }
+}
+
 export const deleteSmartCard = async (req, res) => {
     const {smartCardId} = req.params;
     try {
