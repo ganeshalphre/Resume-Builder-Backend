@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 const resumeSchema = new Schema({
     userId: {
-        type: String
+        type: Schema.Types.ObjectId,
+        res: "User"
     },
     fileName: {
         type: String,

@@ -1,6 +1,7 @@
 import Resume from "../Models/resumeModel.js";
 
 export const createResume = async (req, res) => {
+    const id = req.user._id;
     const { contact, 
         skills, 
         techSkills, 
@@ -20,6 +21,7 @@ export const createResume = async (req, res) => {
         workshop,
         reference} = req.body;
         try {
+            req.body.userId = id;
             const resume = await new Resume(req.body);
             await resume.save();
             console.log('resume', resume);
@@ -31,10 +33,9 @@ export const createResume = async (req, res) => {
 }
 
 export const getAllResumesByUser = async (req, res) => {
-    // const userId = req.user.id;
+    const userId = req.user._id;
     try {
-        // const resumes = await Resume.find({userId})
-        const resumes = await Resume.find();
+        const resumes = await Resume.find({userId})
         return res.json({success: true, msg: "User Resumes Sended Successfully", resumes})
     } catch (error) {
         console.log(error);

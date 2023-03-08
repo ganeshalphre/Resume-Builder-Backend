@@ -4,6 +4,7 @@ let mailTransporter = nodemailer.createTransport({
     service: 'gmail',
     host: "smtp.mailtrap.io",
     port: 2525,
+    secure: false,
     auth: {
         user: 'rienzecv@gmail.com',
         pass: 'ijsesbqkzkkiadwe'
@@ -13,7 +14,7 @@ let mailTransporter = nodemailer.createTransport({
 const email = (otp, mail) => {
     let mailDetails = {                                                                                                                                                                                                                            
         from: process.env.MAIL_ID,  
-        to: mail,
+        to: "sridharsp4774@gmail.com",
         subject: 'Verifivation Mail',
         text: `OTP - ${otp}`
     };

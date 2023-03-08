@@ -2,6 +2,7 @@ import SmartCard from "../Models/smartCardModel.js";
 
 export const createSmartCard = async (req, res) => {
         try {
+            req.body.userId = req.user._id;
             const smartCard = await new SmartCard(req.body);
             await smartCard.save();
             return res.json({success: true, msg: "Smart Card Data Updated Successfully", smartCard});
@@ -12,11 +13,10 @@ export const createSmartCard = async (req, res) => {
 }
 
 export const getAllSmartCardsByUser = async (req, res) => {
-    // const userId = req.user.id;
+    const userId = req.user._id;
     try {
-        // const smartCards = await SmartCard.find({userId})
-        const smartCards = await SmartCard.find()
-        return res.json({success: true, msg: "User Resumes Sended Successfully", smartCards})
+        const smartCards = await SmartCard.find({userId})
+        return res.json({success: true, msg: "User Cards Sended Successfully", smartCards})
     } catch (error) {
         console.log(error);
         return res.json({success: false, msg: "something went wrong", error})
@@ -67,8 +67,7 @@ export const updateSmartCardName = async (req, res) => {
 export const deleteSmartCard = async (req, res) => {
     const {smartCardId} = req.params;
     try {
-        const smartCard = await SmartCard.findByIdAndDelete(smartCard);
-        console.log(smartCard);
+        const smartCard = await SmartCard.findByIdAndDelete(smartCardId);
         const smartCards = await SmartCard.find();
         return res.json({success: true, msg: "Smart Card Deleted Successfully", smartCards});
     } catch (error) {
